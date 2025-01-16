@@ -19,7 +19,7 @@ const SortingToolbar = ({
   const iconComponent = sortValues[sortBy!]?.icon;
 
   return (
-    <View className="flex-row gap-2 p-4 pb-0 bg-gray-950">
+    <View className="flex-row gap-2 bg-gray-950">
       <Pressable
         onPress={openSortingSheet}
         className="w-min self-start py-2.5 px-3 rounded-xl bg-gray-900 flex-row items-center gap-2"
