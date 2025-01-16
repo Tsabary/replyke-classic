@@ -9,22 +9,22 @@ export const sortValues: Record<
 > = {
   new: {
     title: "New",
-    icon: <Feather name="sun" size={12} color="#6b7280" />,
-    iconSelected: <Feather name="sun" size={12} color="#fff" />,
+    icon: <Feather name="sun" size={16} color="#6b7280" />,
+    iconSelected: <Feather name="sun" size={16} color="#fff" />,
   },
   hot: {
     title: "Hot",
-    icon: <FontAwesome5 name="fire" size={12} color="#6b7280" />,
-    iconSelected: <FontAwesome5 name="fire" size={12} color="#fff" />,
+    icon: <FontAwesome5 name="fire" size={16} color="#6b7280" />,
+    iconSelected: <FontAwesome5 name="fire" size={16} color="#fff" />,
   },
   top: {
     title: "Top",
-    icon: <FontAwesome5 name="trophy" size={12} color="#6b7280" />,
-    iconSelected: <FontAwesome5 name="trophy" size={12} color="#fff" />,
+    icon: <FontAwesome5 name="trophy" size={16} color="#6b7280" />,
+    iconSelected: <FontAwesome5 name="trophy" size={16} color="#fff" />,
   },
   controversial: {
     title: "Controversial",
-    icon: <FontAwesome5 name="balance-scale" size={12} color="#6b7280" />,
-    iconSelected: <FontAwesome5 name="balance-scale" size={12} color="#fff" />,
+    icon: <FontAwesome5 name="balance-scale" size={16} color="#6b7280" />,
+    iconSelected: <FontAwesome5 name="balance-scale" size={16} color="#fff" />,
   },
 };

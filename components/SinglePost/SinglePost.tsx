@@ -11,11 +11,11 @@ const SinglePost = () => {
 
   if (!entity) return null;
   return (
-    <View className="bg-gray-900 rounded-2xl p-4 gap-2.5">
+    <View className="bg-gray-900 rounded-xl p-4 gap-2.5">
       <PostHeader />
       <PostKeywords />
 
-      <View className="bg-white aspect-square rounded-2xl p-6 justify-center">
+      <View className="bg-white aspect-square rounded-xl p-6 justify-center">
         <Text
           className="text-2xl font-semibold text-center"
           style={{ fontFamily: "SpaceMono" }}

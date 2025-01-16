@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import { EntityProvider, useFeed } from "replyke-rn";
-import Skeleton from "../shared/Skeleton";
+import { SinglePostSkeleton } from "../shared/Skeleton";
 import { Animated, RefreshControl, View, Text } from "react-native";
 import { SinglePost } from "../SinglePost";
 
@@ -24,11 +24,34 @@ function Feed({
 
   const initialLoading = loading && (!entities || entities.length === 0);
 
-  if (initialLoading) return <Skeleton height="100%" width="100%" />;
+  if (initialLoading)
+    return (
+      <View className="flex-1 bg-gray-950">
+        <Animated.FlatList
+          data={[1, 2, 3]}
+          renderItem={() => <SinglePostSkeleton />}
+          keyExtractor={(item) => item.toString()}
+          contentContainerStyle={{
+            gap: 16,
+            padding: 16,
+            paddingTop: 0,
+            backgroundColor: "#030712",
+          }}
+          decelerationRate="fast"
+          showsVerticalScrollIndicator={false}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            { useNativeDriver: true }
+          )}
+          scrollEventThrottle={16}
+          bounces={false}
+        />
+      </View>
+    );
 
   return (
     <View
-      className="flex-1"
+      className="flex-1 bg-gray-950"
       onLayout={(event) => {
         if (event.nativeEvent.layout.height > listHeight)
           setListHeight(event.nativeEvent.layout.height);
@@ -48,6 +71,7 @@ function Feed({
         contentContainerStyle={{
           gap: 16,
           padding: 16,
+          paddingTop: 0,
           backgroundColor: "#030712",
         }}
         onEndReached={loadMore}
@@ -75,11 +99,8 @@ function Feed({
             </View>
           )
         }
-
-        pagingEnabled
         decelerationRate="fast"
         showsVerticalScrollIndicator={false}
-        snapToAlignment="start"
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true }

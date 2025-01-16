@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
 
-import BackNavigation from "../../../components/shared/BackNavigation";
+import BackNavigation from "../../components/shared/BackNavigation";
 
 const editProfile = () => {
   const router = useRouter();

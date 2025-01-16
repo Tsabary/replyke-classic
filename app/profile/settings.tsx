@@ -9,7 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-import BackNavigation from "../../../components/shared/BackNavigation";
+import BackNavigation from "../../components/shared/BackNavigation";
 
 const Settings = () => {
   const router = useRouter();

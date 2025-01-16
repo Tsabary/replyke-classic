@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -6,29 +5,28 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { useUser } from "replyke-rn";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { useUser } from "replyke-rn";
 import { StatusBar } from "expo-status-bar";
-import { cn } from "../../../utils/cn";
+import { cn } from "../../utils/cn";
 
-const EditName = () => {
+const AddBio = () => {
   const router = useRouter();
-
   const { user, updateUser } = useUser();
 
-  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
   const [updating, setUpdating] = useState(false);
 
-  const savePermitted =
-    name.length > 0 && name.length <= 30 && user?.name !== name;
+  const savePermitted = bio.length <= 120 && user?.bio !== bio;
 
-  const handleUpdateName = async () => {
+  const handleUpdateBio = async () => {
     if (updating || !savePermitted) return;
     setUpdating(true);
 
     try {
-      await updateUser?.({ name });
+      await updateUser?.({ bio });
 
       router.back(); // Navigate back only after success
     } catch (error: any) {
@@ -39,7 +37,11 @@ const EditName = () => {
   };
 
   useEffect(() => {
-    if (user) setName(user.name || "");
+    if (user) setBio(user.bio || "");
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) router.navigate("/(tabs)");
   }, [user]);
 
   return (
@@ -59,7 +61,7 @@ const EditName = () => {
             </Pressable>
           </View>
 
-          <Text className="text-xl font-bold">Name</Text>
+          <Text className="text-xl font-bold">Bio</Text>
 
           <View className="flex-1 justify-end">
             {updating ? (
@@ -67,8 +69,8 @@ const EditName = () => {
             ) : (
               <Pressable
                 disabled={!savePermitted}
-                onPress={handleUpdateName}
-                className="py-4 px-5"
+                onPress={handleUpdateBio}
+                className="py-4 px-6"
               >
                 <Text
                   className={cn(
@@ -82,30 +84,32 @@ const EditName = () => {
             )}
           </View>
         </View>
-        <View className="px-5 py-3 flex-row items-center border-b border-gray-200">
+        <View className="px-5 py-3 border-b border-gray-200">
           <TextInput
-            value={name}
+            value={bio}
             onChangeText={(value) => {
-              if (value.length > 30) return;
-              setName(value);
+              if (value.length > 120) return;
+              setBio(value);
             }}
-            className="flex-1 text-left"
-            placeholder="Your name"
+            placeholder="Add a bio"
             placeholderTextColor="#9ca3af"
-            autoCapitalize="none"
+            className="text-lg h-36"
+            numberOfLines={5}
+            multiline
+            style={{ textAlignVertical: "top" }} // Aligns placeholder text to the top
           />
-          <Text
-            className={cn(
-              "my-2 w-12 text-right",
-              name.length === 30 ? "text-red-500" : "text-gray-500"
-            )}
-          >
-            {name.length}/30
-          </Text>
         </View>
+        <Text
+          className={cn(
+            "my-2 px-6",
+            bio.length === 120 ? "text-red-500" : "text-gray-500"
+          )}
+        >
+          {bio.length}/120
+        </Text>
       </SafeAreaView>
     </>
   );
 };
 
-export default EditName;
+export default AddBio;

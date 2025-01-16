@@ -19,7 +19,7 @@ const SingleBookmark = ({ entity }: { entity: Partial<Entity> }) => {
       }}
       className="px-4 py-2.5 flex-row gap-3 items-center"
     >
-      <View className="bg-gray-700 rounded-2xl aspect-square h-10 items-center justify-center">
+      <View className="bg-gray-700 rounded-xl aspect-square h-10 items-center justify-center">
         {entity.metadata?.icon ? (
           <>
             {entity.metadata.icon.endsWith(".svg") ? (

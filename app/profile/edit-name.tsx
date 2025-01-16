@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -7,35 +7,28 @@ import {
   View,
 } from "react-native";
 import { useUser } from "replyke-rn";
-import validator from "validator";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import { cn } from "../../../utils/cn";
+import { StatusBar } from "expo-status-bar";
+import { cn } from "../../utils/cn";
 
-const debounce = (func: Function, delay: number) => {
-  let timer: NodeJS.Timeout;
-  return (...args: any[]) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
-  };
-};
-
-const EditExternalUrl = () => {
+const EditName = () => {
   const router = useRouter();
+
   const { user, updateUser } = useUser();
 
-  const [url, setUrl] = useState("");
+  const [name, setName] = useState("");
   const [updating, setUpdating] = useState(false);
-  const [isValidUrl, setIsValidUrl] = useState<null | boolean>(null);
 
-  const savePermitted = isValidUrl === true;
+  const savePermitted =
+    name.length > 0 && name.length <= 30 && user?.name !== name;
 
-  const handleUpdateUrl = async () => {
+  const handleUpdateName = async () => {
     if (updating || !savePermitted) return;
     setUpdating(true);
 
     try {
-      await updateUser?.({ metadata: { ...user?.metadata, externalUrl: url } });
+      await updateUser?.({ name });
 
       router.back(); // Navigate back only after success
     } catch (error: any) {
@@ -45,27 +38,13 @@ const EditExternalUrl = () => {
     }
   };
 
-  const debouncedCheckUrl = useCallback(
-    debounce((value: string) => {
-      setIsValidUrl(validator.isURL(value));
-    }, 1500),
-    []
-  );
-
-  const handleUrlChange = (value: string) => {
-    setUrl(value);
-    setIsValidUrl(null); // Reset validity state while typing
-    debouncedCheckUrl(value);
-  };
-
   useEffect(() => {
-    if (user?.metadata.externalUrl) {
-      setUrl(user.metadata.externalUrl);
-    }
+    if (user) setName(user.name || "");
   }, [user]);
 
   return (
     <>
+      <StatusBar style="dark" backgroundColor="#fff" />
       <SafeAreaView className="flex-1">
         {/* Header */}
         <View className="flex-row items-center border-b border-gray-200">
@@ -80,7 +59,7 @@ const EditExternalUrl = () => {
             </Pressable>
           </View>
 
-          <Text className="text-xl font-bold">External URL</Text>
+          <Text className="text-xl font-bold">Name</Text>
 
           <View className="flex-1 justify-end">
             {updating ? (
@@ -88,7 +67,7 @@ const EditExternalUrl = () => {
             ) : (
               <Pressable
                 disabled={!savePermitted}
-                onPress={handleUpdateUrl}
+                onPress={handleUpdateName}
                 className="py-4 px-5"
               >
                 <Text
@@ -103,32 +82,30 @@ const EditExternalUrl = () => {
             )}
           </View>
         </View>
-        <View className="px-5 py-3 flex-row items-baseline border-b border-gray-200">
-          <Text className="text-gray-500">https://</Text>
+        <View className="px-5 py-3 flex-row items-center border-b border-gray-200">
           <TextInput
-            value={url}
-            onChangeText={handleUrlChange}
-            className="flex-1 text-left pl-0"
-            placeholder="yourwebsite.com"
+            value={name}
+            onChangeText={(value) => {
+              if (value.length > 30) return;
+              setName(value);
+            }}
+            className="flex-1 text-left"
+            placeholder="Your name"
             placeholderTextColor="#9ca3af"
             autoCapitalize="none"
-            keyboardType="url"
           />
+          <Text
+            className={cn(
+              "my-2 w-12 text-right",
+              name.length === 30 ? "text-red-500" : "text-gray-500"
+            )}
+          >
+            {name.length}/30
+          </Text>
         </View>
-
-        {isValidUrl === false && (
-          <Text className="text-red-500 text-sm px-6 mt-2">
-            Please enter a valid URL.
-          </Text>
-        )}
-        {isValidUrl === true && (
-          <Text className="text-blue-600 text-sm px-6 mt-2">
-            This URL is valid.
-          </Text>
-        )}
       </SafeAreaView>
     </>
   );
 };
 
-export default EditExternalUrl;
+export default EditName;

@@ -57,6 +57,69 @@ const Skeleton = ({
   return <Animated.View style={[style, animatedStyle]} />;
 };
 
+const SinglePostSkeleton = () => {
+  return (
+    <View className="bg-gray-900 rounded-2xl p-4 w-full gap-3">
+      <View className="flex-row gap-2 items-center">
+        <Skeleton height={36} width={36} borderRadius={12} bgColor="#4b5563" />
+        <View className="gap-2 flex-1 ">
+          <Skeleton
+            height={10}
+            width="auto"
+            borderRadius={6}
+            bgColor="#4b5563"
+          />
+          <Skeleton
+            height={10}
+            width="60%"
+            bgColor="#4b5563"
+            borderRadius={6}
+            style={{ marginTop: 4 }}
+          />
+        </View>
+      </View>
+      <View className="w-full aspect-video">
+        <Skeleton
+          height="100%"
+          width="100%"
+          borderRadius={12}
+          bgColor="#4b5563"
+        />
+      </View>
+      <View className="flex-row gap-3">
+        <Skeleton
+          height="auto"
+          width="25%"
+          borderRadius={12}
+          bgColor="#4b5563"
+        />
+        <Skeleton
+          height="auto"
+          width="11%"
+          borderRadius={12}
+          bgColor="#4b5563"
+          style={{ aspectRatio: 1 }}
+        />
+        <Skeleton
+          height="auto"
+          width="11%"
+          borderRadius={12}
+          bgColor="#4b5563"
+          style={{ aspectRatio: 1 }}
+        />
+        <View className="flex-1" />
+        <Skeleton
+          height="auto"
+          width="11%"
+          borderRadius={12}
+          style={{ aspectRatio: 1 }}
+          bgColor="#4b5563"
+        />
+      </View>
+    </View>
+  );
+};
+
 const BookmarkSkeleton = () => {
   return (
     <View className="flex-row gap-3 px-4 py-2.5 items-center">
@@ -66,6 +129,6 @@ const BookmarkSkeleton = () => {
   );
 };
 
-export { BookmarkSkeleton };
+export { SinglePostSkeleton, BookmarkSkeleton };
 
 export default Skeleton;

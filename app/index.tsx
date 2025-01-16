@@ -5,10 +5,11 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BottomSheet from "@gorhom/bottom-sheet";
 
-import Feed from "../../components/home/Feed";
-import SortingToolbar from "../../components/home/SortingToolbar";
-import SortingSheet from "../../components/home/SortingSheet";
-import TimeFrameSheet from "../../components/home/TimeFrameSheet";
+import Feed from "../components/home/Feed";
+import SortingToolbar from "../components/home/SortingToolbar";
+import SortingSheet from "../components/home/SortingSheet";
+import TimeFrameSheet from "../components/home/TimeFrameSheet";
+import { TopBar } from "../components/shared/TopBar";
 
 const Home = () => {
   const sortingDrawerRef = useRef<BottomSheet>(null);
@@ -34,12 +35,13 @@ const Home = () => {
     <>
       <StatusBar style="light" backgroundColor="#000" />
       <SafeAreaView className="relative flex-1">
+        <TopBar />
         <FeedProvider sortBy="hot">
           <SortingToolbar
             openSortingSheet={openSortingSheet}
             openTimeFrameSheet={openTimeFrameSheet}
           />
-          <View className="flex-1">
+          <View className="flex-1 mt-2">
             <Feed />
           </View>
         </FeedProvider>

@@ -105,12 +105,12 @@ const CommentsComponents = memo(
             <SortByButton
               priority="top"
               activeView={
-                <Text className="bg-black py-2 px-3 rounded-md text-white text-sm">
+                <Text className="bg-black py-2 px-3 rounded-xl text-white text-sm">
                   Top
                 </Text>
               }
               nonActiveView={
-                <Text className="bg-gray-200 py-2 px-3 rounded-md text-sm">
+                <Text className="bg-gray-200 py-2 px-3 rounded-xl text-sm">
                   Top
                 </Text>
               }
@@ -118,12 +118,12 @@ const CommentsComponents = memo(
             <SortByButton
               priority="new"
               activeView={
-                <Text className="bg-black py-2 px-3 rounded-md text-white text-sm">
+                <Text className="bg-black py-2 px-3 rounded-xl text-white text-sm">
                   New
                 </Text>
               }
               nonActiveView={
-                <Text className="bg-gray-200 py-2 px-3 rounded-md text-sm">
+                <Text className="bg-gray-200 py-2 px-3 rounded-xl text-sm">
                   New
                 </Text>
               }

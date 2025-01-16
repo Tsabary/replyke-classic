@@ -25,7 +25,7 @@ function PostKeywords() {
       {entity.keywords.slice(0, visibleCount).map((keyword, index) => (
         <TouchableOpacity
           onPress={() => updateKeywordsFilters?.("add", "includes", keyword)}
-          className="border border-gray-500 px-3 py-1 rounded-lg"
+          className="border border-gray-500 px-3 py-1 rounded-xl"
           key={index}
         >
           <Text className="text-gray-500 text-sm">{keyword}</Text>
@@ -34,7 +34,7 @@ function PostKeywords() {
       {entity.keywords.length > 5 && (
         <TouchableOpacity
           onPress={isShowingAll ? reset : showMore}
-          className="px-3 py-1 rounded-lg"
+          className="px-3 py-1 rounded-xl"
         >
           <Text className="text-gray-500 text-sm">
             {isShowingAll ? "Hide" : "Show more"}

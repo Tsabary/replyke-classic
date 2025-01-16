@@ -12,9 +12,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Redirect } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
-import BackNavigation from "../../components/shared/BackNavigation";
-import { groupNotifications } from "../../helpers/groupNotifications";
-import { SingleNotification } from "../../components/notifications/SingleNotification";
+import BackNavigation from "../components/shared/BackNavigation";
+import { groupNotifications } from "../helpers/groupNotifications";
+import { SingleNotification } from "../components/notifications/SingleNotification";
 
 function Notifications() {
   const {

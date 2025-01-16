@@ -43,7 +43,7 @@ const Authenticate = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className="flex-1 bg-white">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           className="flex-1"

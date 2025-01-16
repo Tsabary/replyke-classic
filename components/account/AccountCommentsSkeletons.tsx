@@ -8,7 +8,7 @@ const AccountCommentsSkeletons = () => {
       data={[1, 2, 3]}
       className="mt-6"
       renderItem={() => (
-        <View className="py-4 px-4 gap-2 bg-gray-800 mx-4 rounded-2xl">
+        <View className="py-4 px-4 gap-2 bg-gray-800 mx-4 rounded-xl">
           <Skeleton
             style={{
               width: "80%",

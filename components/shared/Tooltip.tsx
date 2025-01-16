@@ -21,7 +21,7 @@ const Tooltip = ({
       </TouchableOpacity>
 
       {visible && (
-        <View className="absolute top-8 left-0 bg-gray-950 px-4 py-3 rounded-md max-w-[80%]">
+        <View className="absolute top-8 left-0 bg-gray-950 px-4 py-3 rounded-xl max-w-[80%]">
           <Text className="text-white">{message}</Text>
         </View>
       )}

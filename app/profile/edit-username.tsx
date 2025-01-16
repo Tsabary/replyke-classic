@@ -13,8 +13,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { sanitizeUsername } from "../../../helpers/sanitizeUsername";
-import { cn } from "../../../utils/cn";
+import { sanitizeUsername } from "../../helpers/sanitizeUsername";
+import { cn } from "../../utils/cn";
 
 const debounce = (func: Function, delay: number) => {
   let timer: NodeJS.Timeout;

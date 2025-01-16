@@ -6,9 +6,9 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { StatusBar } from "expo-status-bar";
 import { Redirect } from "expo-router";
 
-import BackNavigation from "../../components/shared/BackNavigation";
-import SingleBookmark from "../../components/lists/SingleBookmark";
-import { BookmarkSkeleton } from "../../components/shared/Skeleton";
+import BackNavigation from "../components/shared/BackNavigation";
+import SingleBookmark from "../components/lists/SingleBookmark";
+import { BookmarkSkeleton } from "../components/shared/Skeleton";
 
 function Bookmarks() {
   const { currentList, subLists, openList, goBack } = useLists();
@@ -73,7 +73,7 @@ function Bookmarks() {
                     onPress={() => openList?.(subList)}
                     className="px-4 py-2.5 flex-row gap-3 items-center to-gray-500"
                   >
-                    <View className="bg-gray-700 p-2 rounded-2xl">
+                    <View className="bg-gray-700 p-2 rounded-xl">
                       <Entypo name="list" size={20} color="#fff" />
                     </View>
                     <Text className="text-gray-300">{subList.name}</Text>

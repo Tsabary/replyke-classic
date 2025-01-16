@@ -37,9 +37,9 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
   }, [entityProp, checkIfEntityIsSaved]);
 
   return (
-    <View className="flex-row w-full mt-4" style={{ columnGap: 12 }}>
+    <View className="flex-row w-full" style={{ columnGap: 12 }}>
       {/* VOTING BUTTONS */}
-      <View className="flex-row items-center rounded-2xl bg-gray-800">
+      <View className="flex-row items-center rounded-xl bg-gray-800">
         <TouchableOpacity
           onPress={() => {
             if (!user) {
@@ -57,15 +57,15 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
             }
           }}
           className={cn(
-            "flex-row items-center py-2.5 px-4 rounded-2xl",
+            "flex-row items-center py-2.5 px-4 rounded-xl",
             userUpvotedEntity && "bg-green-500/40"
           )}
           style={{ columnGap: 6 }}
         >
           {userUpvotedEntity ? (
-            <Feather name="arrow-up-circle" size={28} color="#22c55e" />
+            <Feather name="arrow-up-circle" size={24} color="#22c55e" />
           ) : (
-            <Feather name="arrow-up-circle" size={28} color="#9ca3af" />
+            <Feather name="arrow-up-circle" size={24} color="#9ca3af" />
           )}
           <Text
             className={userUpvotedEntity ? "text-[#22c55e]" : "text-[#9ca3af]"}
@@ -99,9 +99,9 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
           style={{ columnGap: 6 }}
         >
           {userDownvotedEntity ? (
-            <Feather name="arrow-down-circle" size={28} color="#ef4444" />
+            <Feather name="arrow-down-circle" size={24} color="#ef4444" />
           ) : (
-            <Feather name="arrow-down-circle" size={28} color="#9ca3af" />
+            <Feather name="arrow-down-circle" size={24} color="#9ca3af" />
           )}
         </TouchableOpacity>
       </View>
@@ -110,12 +110,12 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
       <TouchableOpacity
         onPress={() => openCommentSectionDrawer?.(entity.id)}
         className={cn(
-          "flex-row items-center p-2.5 rounded-2xl bg-gray-800",
+          "flex-row items-center p-2.5 rounded-xl bg-gray-800",
           (entity.repliesCount || 0) > 0 && "px-4"
         )}
         style={{ columnGap: 6 }}
       >
-        <Ionicons name="chatbubble" size={24} color="#9ca3af" />
+        <Ionicons name="chatbubble" size={22} color="#9ca3af" />
 
         {(entity.repliesCount || 0) > 0 && (
           <Text className="text-[#9ca3af]">{entity.repliesCount}</Text>
@@ -128,7 +128,7 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
           e.stopPropagation();
           await Clipboard.setStringAsync(entity.content || "");
         }}
-        className="p-2.5 rounded-2xl bg-gray-800"
+        className="p-2.5 rounded-xl bg-gray-800"
       >
         <DocumentDuplicateIcon size={28} color="#9ca3af" />
       </TouchableOpacity> */}
@@ -147,13 +147,13 @@ function PostActions({ entity: entityProp }: { entity: Entity }) {
               })
         }
         className={cn(
-          "p-2.5 rounded-2xl",
+          "rounded-xl aspect-square justify-center items-center",
           entityIsSaved ? "bg-blue-500/40" : "bg-gray-800"
         )}
       >
         <FontAwesome
           name="bookmark"
-          size={24}
+          size={22}
           color={entityIsSaved ? "#60a5fa" : "#9ca3af"}
         />
       </TouchableOpacity>

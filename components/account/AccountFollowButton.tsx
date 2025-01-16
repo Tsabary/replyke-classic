@@ -32,7 +32,7 @@ const AccountFollowButton = ({
 
   if ((isUserFollowed || isUserFollowComplete) && !isUserUnfollowComplete)
     return (
-      <View className="flex-row justify-center items-center gap-3 bg-gray-300 self-center w-56 p-4 rounded-lg mt-5">
+      <View className="flex-row justify-center items-center gap-3 bg-gray-300 self-center w-56 p-4 rounded-xl mt-5">
         <Text className="text-gray-700">Following</Text>
       </View>
     );
@@ -40,7 +40,7 @@ const AccountFollowButton = ({
   return (
     <TouchableOpacity
       onPress={handleFollowUser}
-      className="bg-red-500 self-center w-56 p-4 rounded-lg mt-5"
+      className="bg-red-500 self-center w-56 p-4 rounded-xl mt-5"
     >
       <Text className="text-white text-center">Follow</Text>
     </TouchableOpacity>

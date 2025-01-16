@@ -14,14 +14,14 @@ import {
   useAuth,
 } from "replyke-rn";
 
-import AccountStats from "../../../components/account/AccountStats";
-import AccountSkeletons from "../../../components/account/AccountSkeletons";
-import { SinglePost } from "../../../components/SinglePost";
-import ProfileHeader from "../../../components/profile/ProfileHeader";
-import ProfileUsername from "../../../components/profile/ProfileUsername";
-import ProfileBio from "../../../components/profile/ProfileBio";
-import ProfileExternalUrl from "../../../components/profile/ProfileExternalUrl";
-import { cn } from "../../../utils/cn";
+import AccountStats from "../../components/account/AccountStats";
+import AccountSkeletons from "../../components/account/AccountSkeletons";
+import { SinglePost } from "../../components/SinglePost";
+import ProfileHeader from "../../components/profile/ProfileHeader";
+import ProfileUsername from "../../components/profile/ProfileUsername";
+import ProfileBio from "../../components/profile/ProfileBio";
+import ProfileExternalUrl from "../../components/profile/ProfileExternalUrl";
+import { cn } from "../../utils/cn";
 
 const LIST_HEADER_COMPONENT_PADDING = 36;
 

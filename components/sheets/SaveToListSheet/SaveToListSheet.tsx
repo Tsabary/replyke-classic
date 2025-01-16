@@ -71,7 +71,7 @@ const ListsComponents = ({
               onChangeText={setNewListName}
               placeholder="Create a collection.."
               placeholderTextColor="#9ca3af"
-              className="bg-gray-200 rounded-2xl p-4 text-gray-600"
+              className="bg-gray-200 rounded-xl p-4 text-gray-600"
             />
           ) : (
             <TouchableOpacity onPress={() => setIsCreateListView(true)}>
@@ -97,7 +97,7 @@ const ListsComponents = ({
                   onPress={() => openList?.(subList)}
                   className="px-4 py-2.5 flex-row gap-3 items-center to-gray-500"
                 >
-                  <View className="bg-gray-700 p-2 rounded-2xl">
+                  <View className="bg-gray-700 p-2 rounded-xl">
                     <Entypo name="list" size={20} color="#fff" />
                   </View>
                   <Text className="text-gray-300">{subList.name}</Text>
