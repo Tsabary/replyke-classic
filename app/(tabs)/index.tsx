@@ -7,6 +7,8 @@ import BottomSheet from "@gorhom/bottom-sheet";
 
 import Feed from "../../components/home/Feed";
 import SortingToolbar from "../../components/home/SortingToolbar";
+import SortingSheet from "../../components/home/SortingSheet";
+import TimeFrameSheet from "../../components/home/TimeFrameSheet";
 
 const Home = () => {
   const sortingDrawerRef = useRef<BottomSheet>(null);
@@ -37,10 +39,18 @@ const Home = () => {
             openSortingSheet={openSortingSheet}
             openTimeFrameSheet={openTimeFrameSheet}
           />
-          <View className="flex-1 w-screen">
+          <View className="flex-1">
             <Feed />
           </View>
         </FeedProvider>
+        <SortingSheet
+          ref={sortingDrawerRef}
+          closeSortingSheet={closeSortingSheet}
+        />
+        <TimeFrameSheet
+          ref={timeFrameDrawerRef}
+          closeTimeFrameSheet={closeTimeFrameSheet}
+        />
       </SafeAreaView>
     </>
   );
