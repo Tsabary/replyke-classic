@@ -64,7 +64,7 @@ export default function RootLayout() {
               presentation: "transparentModal", // or 'modal', 'card', etc.
               headerShown: false,
               contentStyle: {
-                backgroundColor: "#fff",
+                backgroundColor: "#030712",
               },
             }}
           >

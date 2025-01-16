@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { getUserName, useEntity } from "replyke-rn";
 import useSheetManager from "../../hooks/useSheetManager";
@@ -23,7 +23,7 @@ const PostCommentsTeaser = () => {
           {entity.topComment.content}
         </Text>
       )}
-      {/* <Text className="text-gray-500">View all comments..</Text> */}
+      <Text className="text-gray-500">View all comments..</Text>
     </TouchableOpacity>
   );
 };

@@ -38,17 +38,18 @@ function Feed({
         data={entities!}
         renderItem={({ item: entity, index }) => (
           <EntityProvider entity={entity}>
-            <SinglePost
-              listHeight={listHeight}
-              scrollY={scrollY}
-              index={index}
-            />
+            <SinglePost />
           </EntityProvider>
         )}
         keyExtractor={(item) => item.id}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
+        contentContainerStyle={{
+          gap: 16,
+          padding: 16,
+          backgroundColor: "#030712",
+        }}
         onEndReached={loadMore}
         onEndReachedThreshold={2}
         ListFooterComponent={null}
@@ -74,9 +75,7 @@ function Feed({
             </View>
           )
         }
-        ItemSeparatorComponent={() => (
-          <View className="h-[0.5px] bg-gray-200" />
-        )}
+
         pagingEnabled
         decelerationRate="fast"
         showsVerticalScrollIndicator={false}
